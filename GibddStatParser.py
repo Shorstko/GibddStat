@@ -144,7 +144,7 @@ def createParser():
     parser = argparse.ArgumentParser(description="GibddStatParser.py [--year] [--months] [--regcode] [--outfilename] [--updatecodes] [--help]")
     parser.add_argument('--year', default=str(datetime.now().year), type=str,
         help = u'год, за который выводится статистика. примеры: --year 2017, --year 2015-2017')
-    parser.add_argument('--month', default="1", type=str,
+    parser.add_argument('--months', default="1", type=str,
         help = u'временной период (в месяцах). примеры: --months 1, --months 1-12')
     parser.add_argument('--regcode', default='0', type=str,
         help = u'ОКАТО-код региона (см. в regions.json). пример для Москвы: --regcode 45')
@@ -176,14 +176,14 @@ def main():
             print(u"Обновление справочника завершено")
         else:
             print(u"Неверное значение параметра --updatecodes")
-        return
+        # return
 
     #получаем диапазон по годам
     years = getParamSplitted(namespace.year, "--year")
 
     #получаем диапазон по месяцам
-    if namespace.month != None:
-        months = getParamSplitted(namespace.month, "--month")
+    if namespace.months != None:
+        months = getParamSplitted(namespace.months, "--months")
     else:
         if years[len(years)-1] == datetime.now().year:
             months = [1, datetime.now().month-1]
