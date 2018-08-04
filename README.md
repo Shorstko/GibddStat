@@ -56,10 +56,17 @@
 
 Для непрограммистов будет достаточно установить [Python 3.6.5](https://www.python.org/downloads/release/python-365/) и вызывать скрипт из командной строки Windows. Например:
 
->   c:\PythonVenv\vePython36\Scripts\python.exe c:\GibddStatParser.py --year 2018
+>   c:\Python36\Scripts\python.exe c:\GibddStatParser.py --year 2018
 
 ## Технические параметры
 
 Код парсера написан на Python 3.6.5.
 
 Зависимости: `requests`, `json`, `datetime`, `codecs`, `os`, `re`, `sys`, `argparse`.
+Если парсер не заработает и будет говорить, что какого-то из этих модулей нет (обычно - requests), нужно выполнить команду вида:
+
+>   c:\Python36\Scripts\pip install requests
+
+или
+
+> c:\Python36\Scripts\easy-install requests
