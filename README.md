@@ -62,11 +62,6 @@
 
 Код парсера написан на Python 3.6.5.
 
-Зависимости: `requests`, `json`, `datetime`, `codecs`, `os`, `re`, `sys`, `argparse`.
-Если парсер не заработает и будет говорить, что какого-то из этих модулей нет (обычно - requests), нужно выполнить команду вида:
+Установите зависимости перед запуском скрипта:
 
->   c:\Python36\Scripts\pip install requests
-
-или
-
-> c:\Python36\Scripts\easy-install requests
+>   pip install -r requirements.txt
