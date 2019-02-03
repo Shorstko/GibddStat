@@ -131,7 +131,21 @@ def getDTPData(region_id, region_name, district_id, district_name, months, year)
         # r = requests.post("http://stat.gibdd.ru/map/getDTPCardData", json=cards_dict_json, cookies = cookie)
         r = requests.post("http://stat.gibdd.ru/map/getDTPCardData", json=cards_dict_json)
         if r.status_code == 200:
-            cards = json.loads(json.loads(r.content)["data"])["tab"]
+            try:
+                cards = json.loads(json.loads(r.content)["data"])["tab"]
+            except:
+                log_text = u"Отсутствуют данные для {0} ({1}) за {2}-{3}.{4}". \
+                    format(region_name, district_name, months[0], months[len(months) - 1], year)
+                print(log_text)
+                write_log(log_text)
+                break
+                # log_text = u"Не удалось получить данные для {} ({}) за {}-{}.{}, диапазон номеров карточек {}-{}". \
+                #     format(region_name, district_name, months[0], months[len(months) - 1], year, start, start + increment - 1)
+                # print(log_text)
+                # write_log(log_text)
+                # start += increment
+                # continue
+
             if len(cards) > 0:
                 if json_data is None:
                     json_data = cards
