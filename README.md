@@ -12,7 +12,7 @@
 
 Для корректной работы парсера в той же папке должен лежать справочник ОКАТО-кодов регионов [regions.json](https://github.com/Shorstko/GibddStat/blob/master/regions.json). Если справочника по какой-то причине нет, можно просто запустить парсер с параметром `--updatecodes y`, и справочник будет создан заново.
 
-Также всю статистику ДТП можно взять [здесь](https://github.com/Shorstko/GibddStat/releases). За подсказку спасибо @espdev.
+Также всю статистику ДТП можно взять [здесь](https://github.com/Shorstko/GibddStat/releases). За подсказку спасибо [espdev](https://github.com/espdev).
 
 ## Запуск парсера
 
