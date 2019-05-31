@@ -65,3 +65,89 @@
 Установите зависимости перед запуском скрипта:
 
 >   pip install -r requirements.txt
+
+## Описание полей
+### Общие поля структуры `data`
+`year` - Год за который была совершена выгрузка
+`region_code` - Код региона
+`region_name` - Название региона
+
+### Поля структуры `Card`
+| `Название_поля_json` | `Человеческое_название_поля` | `тип данных`        | описание                            |
+|:--------------------:|:----------------------------:|:-------------------:|:-----------------------------------:|
+| `-`                  | `yeat`                       | string              | Год карточки                        |
+| `-`                  | `region_code`                | string              | Код региона                         |
+| `-`                  | `region_name`                | string              | Название региона                    |
+| `KartId`             | `card_id`                    | int                 | ID карточки ДТП                     |
+| `rowNum`             | `row_num`                    | int                 | не известно для чего нужно это поле |
+| `date`               | `date`                       | string              | дата ДТП                            |
+| `Time`               | `time`                       | string              | время ДТП                           |
+| `District`           | `district`                   | string              | район ДТП                           |
+| `DTP_V`              | `traffic_accident`           | string              | причина ДТП                         |
+| `POG`                | `number_dead`                | int                 | число погибших                      |
+| `RAN`                | `injured_number`             | int                 | число пострадавших                  |
+| `K_TS`               | `vehicle_number`             | int                 | количество ТС                       |
+| `K_UCH`              | `participants_number`        | int                 | количество участников               |
+| `infoDtp`            | `traffic_accident_info`      | TrafficAccidentInfo | информация о ДТП                    |
+
+### Поля структуры `TrafficAccidentInfo`
+
+| `Название_поля_json` | `Человеческое_название_поля` |  `тип данных`  |                                 описание                                |
+|:--------------------:|:----------------------------:|:--------------:|:-----------------------------------------------------------------------:|
+|         `ndu`        | `road_network_disadvantages` |    []string    | недостатки транспортного и эксплуатационного обслуживания дорожной сети |
+|        `sdor`        |        `RN_object_TA`        |    []string    |    объекты УДС на месте ДТП (RN - road network TA - traffic accident)   |
+|       `ts_info`      |        `vehicle_info`        |  []VehicleInfo |                   информация о транспортных средствах                   |
+|         `n_p`        |      `human_settlement`      |     string     |                             населенный пункт                            |
+|       `street`       |           `street`           |     string     |                              название улицы                             |
+|        `house`       |            `house`           |     string     |                                номер дома                               |
+|         `dor`        |          `road_name`         |     string     |                             название дороги                             |
+|         `km`         |             `km`             |     string     |                             номер километра                             |
+|          `m`         |              `m`             |     string     |                               номер метра                               |
+|        `k_ul`        |       `street_category`      |     string     |                             категория улицы                             |
+|        `dor_k`       |        `road_category`       |     string     |                             категория дороги                            |
+|        `dor_z`       |       `road_importance`      |     string     |                             значение дороги                             |
+|       `factor`       |           `factor`           |    []string    |                               факторы ДТП                               |
+|        `s_pog`       |      `weather_condition`     |    []string    |                             погодные условия                            |
+|        `s_pch`       |    `carriageway_condition`   |     string     |                         состояние проезжей части                        |
+|         `osv`        |          `lighting`          |     string     |          освещенность (например светлое или темное время суток)         |
+|  `change_org_motion` |    `сhanges_movement_mode`   |     string     |                         режим изменения движения                        |
+|        `s_dtp`       |  `TA_carriageway_condition`  |     string     |                  Состояние проезжей части во время ДТП                  |
+|       `COORD_W`      |          `latitude`          | string, double |                                  Широта                                 |
+|       `COORD_L`      |          `longitude`         | string, double |                                 Долгота                                 |
+|       `OBJ_DTP`      |         `objects_TA`         |    []string    |                               объекты ДТП                               |
+|       `uchInfo`      |      `participant_info`      |    []object    |                          информацие об участниках                       |
+
+### Поля структуры `VehicleInfo`
+
+| `Название_поля_json` | `Человеческое_название_поля` |     `тип данных`     |                                               описание                                               |
+|:--------------------:|:----------------------------:|:--------------------:|:----------------------------------------------------------------------------------------------------:|
+|        `n_ts`        |       `vehicle_number`       |      string, int     |                                               номер ТС                                               |
+|        `ts_s`        |                              |        string        |                                       не удалось разобрать поле                                      |
+|        `t_ts`        |            `type`            |        string        |                                                тип ТС                                                |
+|      `marka_ts`      |            `brand`           |        string        |                                               марка ТС                                               |
+|        `m_ts`        |            `model`           |        string        |                                               модель ТС                                              |
+|        `color`       |            `color`           |        string        |                                                цвет ТС                                               |
+|        `r_rul`       |      `transmission_type`     |        string        |                  тип трансмиссии (полноприводные, заднеприводные, переднеприводные)                  |
+|         `g_v`        |      `manufacture_year`      |      string, int     |                                            год выпуска ТС                                            |
+|        `m_pov`       |                              |        string        | Гугл говорит, что это значит https://ru.wikipedia.org/wiki/Википедия:Мегаломаниакальная_точка_зрения |
+|         `t_n`        |      `technical_failure`     |        string        |                                       технические неисправности                                      |
+|        `f_sob`       |       `ownership_form`       |        string        |                                          форма собственности                                         |
+|        `o_pf`        |         `legal_form`         |        string        |                                     организационно-правовая форма                                    |
+|       `ts_uch`       |     `vehicle_participant`    | []VehicleParticipant |                                             ТС учатсника                                             |
+
+### Поля структуры `VehicleParticipant`
+
+| `Название_поля_json` | `Человеческое_название_поля` | `тип данных` |                            описание                           |
+|:--------------------:|:----------------------------:|:------------:|:-------------------------------------------------------------:|
+|        `K_UCH`       |          `category`          |    string    |                      категория участника                      |
+|        `NPDD`        |    `direct_violations_RoR`   |   []string   |         Прямые нарушения ПДД (RoR - Rules of the Road)        |
+|         `S_T`        |          `severity`          |    string    |                        степень тяжести                        |
+|         `POL`        |             `sex`            |    string    |                              пол                              |
+|        `V_ST`        |     `driving_experience`     |  string, int |                         опыт вождения                         |
+|        `ALCO`        |     `intoxication_degree`    |    string    |                 степень алкогольного опьянения                |
+|      `SOP_NPDD`      |   `related_violations_RoR`   |   []string   |                  сопутствующие нарушения ПДД                  |
+|     `SAFETY_BELT`    |       `use_safety_belt`      |    string    |               использовался ремень безопасности               |
+|        `S_SM`        |          `leave_TA`          |    string    |                       покинул место ДТП?                      |
+|        `N_UCH`       |     `number_participant`     |  string, int |                      номер участника ДТП                      |
+|    `S_SEAT_GROUP`    |         `seat_group`         |    string    | группа сидения (скорей всего подразумевается десткое сиденье) |
+|   `INJURED_CARD_ID`  |       `injured_card_id`      |    string    |                       неизвестно что это                      |
